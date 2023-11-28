@@ -14,7 +14,7 @@ gradlePlugin{
 }
 
 dependencies {
-    implementation 'com.android.tools.build:gradle:8.0.2'
+    implementation 'com.android.tools.build:gradle:8.1.1'
 }
 
 group 'com.wln.plugin'
