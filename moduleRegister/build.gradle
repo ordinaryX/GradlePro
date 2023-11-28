@@ -1,0 +1,39 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+gradlePlugin{
+    plugins{
+        DependenciesPlugin{
+            id = 'com.wln.plugin.moduleRegister'
+            implementationClass = 'com.wln.plugin.ModuleRegisterPlugin'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.android.tools.build:gradle:8.0.2'
+}
+
+group 'com.wln.plugin'
+version '1.0.0'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = group
+            artifactId = 'moduleRegister'
+            version = version
+
+            from components.java
+        }
+    }
+    // 配置仓库地址
+    repositories {
+        maven {
+            url layout.buildDirectory.dir("moduleRegister-repo")
+        }
+    }
+}
